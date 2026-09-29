@@ -100,6 +100,7 @@
 
         public bool Equals(TRTriangle name)
         {
+            if (name == null) return false;
             return (name.sideA == sideA && name.sideB == sideB || name.sideA == sideB && name.sideB == sideA) ;
             
         }
