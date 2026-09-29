@@ -4,7 +4,7 @@
     //перпендикулярне до катетів і опускається у прямий кут трикутника) на основі класу
     //TRTriangle. Додати поле висоти піраміди, метод знаходження об’єму піраміди та
     //перевизначити відповідні методи.
-    internal class TRPiramid : TRTriangle
+    public class TRPiramid : TRTriangle
     {
         double high;
 

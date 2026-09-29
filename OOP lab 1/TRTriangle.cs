@@ -1,6 +1,6 @@
 ﻿namespace OOP_lab_1
 {
-    internal class TRTriangle
+    public class TRTriangle
     {
         double sideA;
         double sideB;
