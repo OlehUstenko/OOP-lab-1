@@ -1,6 +1,4 @@
-﻿using System.Threading.Channels;
-
-namespace OOP_lab_1
+﻿namespace OOP_lab_1
 {
     internal class TRTriangle
     {
@@ -67,7 +65,7 @@ namespace OOP_lab_1
             Console.WriteLine(ToString());
         }
 
-        public double S()
+        public virtual double S()
         {
             return (sideA * sideB) / 2;
         }
@@ -77,12 +75,12 @@ namespace OOP_lab_1
             return Math.Sqrt(Math.Pow(sideA, 2) + Math.Pow(sideB, 2));
         }
 
-        public double P()
+        public virtual double P()
         {
             return sideA + sideB + Hipotenusa();
         }
 
-        public bool Equels(TRTriangle name)
+        public bool Equals(TRTriangle name      )
         {
             return (name.sideA == sideA && name.sideB == sideB || name.sideA == sideB && name.sideB == sideA) ;
             
