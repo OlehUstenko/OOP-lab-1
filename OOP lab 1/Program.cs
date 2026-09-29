@@ -46,22 +46,25 @@
             tr1.SetTRTriangle();
             Console.WriteLine(tr1.ToString() + $"та гіпотенузу {tr1.Hipotenusa()}");
             Console.WriteLine($"Периметр {tr1.P()} та площу {tr1.S()}");
-
-        L2:
-            Console.WriteLine("\nВведіть число на яке помножити трикутник: ");
-            int num = int.Parse(Console.ReadLine());
-            if (num < 0)
+            double num;
+            while (true)
             {
+                Console.WriteLine("\nВведіть число на яке помножити трикутник: ");
+                num = double.Parse(Console.ReadLine());
+                if (num >= 0)
+                {
+                    tr1 = num * tr1;
+                    break;
+                }
                 Console.WriteLine("Значення не може бути менше нуля !");
-                goto L2;
             }
-            tr1 = num * tr1;
+            
             Console.WriteLine($"Після множення на {num} маємо таке: ");
             Console.WriteLine(tr1.ToString() + $"та гіпотенузу {tr1.Hipotenusa()}");
             Console.WriteLine($"Периметр {tr1.P()} та площу {tr1.S()}");
 
 
-            Console.Write("\nСтврення трикутника номер 2:");
+            Console.Write("\nСтворення трикутника номер 2:");
 
             var tr2 = new TRTriangle();
             tr2.SetTRTriangle();
@@ -88,7 +91,7 @@
                     pir1 = input * pir1;
                     break;
                 }
-                Console.WriteLine("Хибне занчення , спробуйте ще раз");
+                Console.WriteLine("Хибне значення , спробуйте ще раз");
             }
             Console.Write("Тепер: ");
             Console.WriteLine(pir1.ToString());
@@ -100,7 +103,7 @@
             Console.WriteLine(pir2.ToString());
             Console.WriteLine($"Піраміда має периметр {pir2.P()}, площу {pir2.S()}, та об'єм {pir2.V()}");
 
-            Console.WriteLine("Порпівняння піраміди 1 та 2: " + pir1.Equals(pir2));
+            Console.WriteLine("Порівняння піраміди 1 та 2: " + pir1.Equals(pir2));
         }
         static void ArrTest()
         {
@@ -110,14 +113,20 @@
             array.SetArr();
             Console.WriteLine("\nОтримано масив: ");
             array.GetArrStr();
-        Label:
-            Console.WriteLine("\nЯкий елемент бажаєте замінити? (індекс): ");
-            int choice = int.Parse(Console.ReadLine());
-            if (choice < 0 || choice >= size)
+            int choice;
+            while (true)
             {
-                Console.WriteLine("Значення хибне/за межами масиву");
-                goto Label;
+                Console.WriteLine("\nЯкий елемент бажаєте замінити? (індекс): ");
+                choice = int.Parse(Console.ReadLine());
+
+                if (choice >= 0 && choice < size)
+                {
+                    break; 
+                }
+
+                Console.WriteLine("Значення хибне/за межами масиву! Спробуйте ще раз.");
             }
+
             Console.WriteLine($"\nВведіть значення для [{choice}]: ");
             int val = int.Parse(Console.ReadLine());
             array[choice] = val;
