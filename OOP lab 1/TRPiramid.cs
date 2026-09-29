@@ -45,10 +45,9 @@
             return sTR + s1+ s2 + s3;
         }
 
-        public void V()
+        public double V()
         {
-            double result = base.S() * high / 3 ;
-            Console.WriteLine($"Об'єм піраміди : {result}");
+            return base.S() * high / 3 ;
         }
 
         public override string ToString()
@@ -58,16 +57,49 @@
         }
         public void SetTRPiramid()
         {
-            Console.Write("Введіть катет А: ");
-            SideA = double.Parse(Console.ReadLine());
+            double input;
 
-            Console.Write("Введіть катет B: ");
-            SideB = double.Parse(Console.ReadLine());
+            while (true)
+            {
+                Console.Write("Введіть катет А: ");
+                if (double.TryParse(Console.ReadLine(), out input) && input > 0)
+                {
+                    SideA = input;
+                    break; 
+                }
+                Console.WriteLine("Помилка! Катет має бути числом більшим за 0.");
+            }
 
-            Console.Write("Введіть висоту піраміди");
-            High = double.Parse(Console.ReadLine());
+            while (true)
+            {
+                Console.Write("Введіть катет B: ");
+                if (double.TryParse(Console.ReadLine(), out input) && input > 0)
+                {
+                    SideB = input;
+                    break;
+                }
+                Console.WriteLine("Помилка! Катет має бути числом більшим за 0.");
+            }
+
+            while (true)
+            {
+                Console.Write("Введіть висоту піраміди: ");
+                if (double.TryParse(Console.ReadLine(), out input) && input > 0)
+                {
+                    High = input;
+                    break;
+                }
+                Console.WriteLine("Помилка! Висота має бути числом більшою за 0.");
+            }
         }
-
+        public static TRPiramid operator *(TRPiramid name, double number)
+        {
+            return new TRPiramid(name.SideA * number, name.SideB * number, name.high * number);
+        }
+        public static TRPiramid operator *(double number, TRPiramid name)
+        {
+            return name * number;
+        }
         public bool Equals(TRPiramid other)
         {
             return (this.SideA == other.SideA && this.SideB == other.SideB && this.high == other.high) ||

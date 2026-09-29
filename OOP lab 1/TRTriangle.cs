@@ -32,9 +32,14 @@
         public TRTriangle()
         {
         }
-
+        
         public TRTriangle(double sideA, double sideB)
         {
+            if (sideA < 0 || sideB < 0)
+            {
+                Console.WriteLine("Хибні значення, трикутник не створений.");
+                return;
+            }
             this.sideA = sideA;
             this.sideB = sideB;
         }
@@ -53,11 +58,24 @@
 
         public void SetTRTriangle()
         {
-            Console.Write("Введіть катет А: ");
-            sideA = double.Parse(Console.ReadLine());
-
-            Console.Write("Введіть катет B: ");
-            sideB = double.Parse(Console.ReadLine());
+        SA:
+            Console.Write("\nВведіть катет А: ");
+            double sideA = double.Parse(Console.ReadLine());
+            if (sideA < 0)
+            {
+                Console.WriteLine("Хибні значення");
+                goto SA;
+            }
+        SB:
+            Console.Write("\nВведіть катет Б: ");
+            double sideB = double.Parse(Console.ReadLine());
+            if (sideB < 0)
+            {
+                Console.WriteLine("Хибні значення");
+                goto SB;
+            }
+            this.sideA = sideA;
+            this.sideB = sideB;
         }
 
         public void GetTRTriangle()
@@ -80,7 +98,7 @@
             return sideA + sideB + Hipotenusa();
         }
 
-        public bool Equals(TRTriangle name      )
+        public bool Equals(TRTriangle name)
         {
             return (name.sideA == sideA && name.sideB == sideB || name.sideA == sideB && name.sideB == sideA) ;
             

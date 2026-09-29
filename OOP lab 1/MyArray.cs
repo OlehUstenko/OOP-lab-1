@@ -25,7 +25,7 @@
 
         public void SetArr()
         {
-            Console.Write("\nВведіть значення масиву: ");
+            Console.WriteLine("\nЗаповнення масиву: ");
             for (int i = 0; i < arr.Length; i++)
             {
                 Console.Write($"Введіть елемент {i}: ");
