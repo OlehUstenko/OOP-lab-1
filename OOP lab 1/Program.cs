@@ -50,7 +50,7 @@
             while (true)
             {
                 Console.WriteLine("\nВведіть число на яке помножити трикутник: ");
-                num = double.Parse(Console.ReadLine());
+                num = double.Parse(Console.ReadLine().Replace(",", "."));
                 if (num >= 0)
                 {
                     tr1 = num * tr1;
@@ -85,7 +85,7 @@
             while (true)
             {
                 Console.Write("Введіть число на яке помножити піраміду: ");
-                input = double.Parse(Console.ReadLine());
+                input = double.Parse(Console.ReadLine().Replace(",", "."));
                 if (input >= 0)
                 {
                     pir1 = input * pir1;
@@ -107,29 +107,21 @@
         }
         static void ArrTest()
         {
-            Console.Write("Створення масиву\nВведіть розмір масиву : ");
-            int size = int.Parse(Console.ReadLine());
-            var array = new MyArray(size);
+            var array = new MyArray();
             array.SetArr();
-            Console.WriteLine("\nОтримано масив: ");
             array.GetArrStr();
-            int choice;
-            while (true)
-            {
-                Console.WriteLine("\nЯкий елемент бажаєте замінити? (індекс): ");
-                choice = int.Parse(Console.ReadLine());
 
-                if (choice >= 0 && choice < size)
-                {
-                    break; 
-                }
+            Console.WriteLine("\nЗаміна елементу в масиві");
+            int index =  array.IndexValidator();
 
-                Console.WriteLine("Значення хибне/за межами масиву! Спробуйте ще раз.");
-            }
-
-            Console.WriteLine($"\nВведіть значення для [{choice}]: ");
+            Console.Write($"\nВведіть значення для [{index}]: ");
             int val = int.Parse(Console.ReadLine());
-            array[choice] = val;
+            array[index] = val;
+
+            Console.WriteLine("\nПошук елементу масиву ");
+            int index2 = array.IndexValidator();
+            Console.WriteLine($"Значення [{index2}] = {array[index2]}");
+
             Console.WriteLine("\nОновлений масив: ");
             array.GetArrStr();
             Console.WriteLine($"\nМаксимальне значення в масиві: {array.MaxValueInArr()}, мінімальне значення в масиві : {array.MinValueInArr()}");

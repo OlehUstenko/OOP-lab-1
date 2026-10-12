@@ -2,8 +2,8 @@
 {
     public class TRTriangle
     {
-        double sideA;
-        double sideB;
+        double sideA ;
+        double sideB ;
             
         public double SideA
         {
@@ -13,7 +13,8 @@
             }
             set 
             {
-                if (value > 0) sideA = value; else Console.WriteLine("Сторона має бути більше ніж нуль! ");
+                if (value > 0) sideA = value; 
+                else Console.WriteLine("Сторона має бути більше ніж нуль! ");
             }
         }
        
@@ -25,21 +26,19 @@
             }
             set
             {
-                if (value > 0) sideB = value; else Console.WriteLine("Сторона має бути більше ніж нуль! ");
+                if (value > 0) sideB = value; 
+                else Console.WriteLine("Сторона має бути більше ніж нуль! ");
             }
         }
 
         public TRTriangle()
         {
+            sideA = 3;
+            sideB = 4;
         }
         
         public TRTriangle(double sideA, double sideB)
         {
-            if (sideA < 0 || sideB < 0)
-            {
-                Console.WriteLine("Хибні значення, трикутник не створений.");
-                return;
-            }
             this.sideA = sideA;
             this.sideB = sideB;
         }
@@ -55,27 +54,33 @@
             return $"Прямокутний трикутник має катети: {sideA} та {sideB}";
 
         }
+        public double ValueValidator()
+        {
+            double side;
+            while (true)
+            {
+                Console.Write("\nВведіть довжину сторони:  ");
+                side = double.Parse(Console.ReadLine().Replace('.',','));
 
+                if (side > 0)
+                {
+                    break;
+                }
+
+                Console.WriteLine("Значення хибне/за межами масиву! Спробуйте ще раз.");
+            }
+            return side;
+        }
         public void SetTRTriangle()
         {
-        SA:
+      
             Console.Write("\nВведіть катет А: ");
-            double sideA = double.Parse(Console.ReadLine());
-            if (sideA < 0)
-            {
-                Console.WriteLine("Хибні значення");
-                goto SA;
-            }
-        SB:
+            double sideA = ValueValidator();
+            this.SideA = sideA;      
+
             Console.Write("\nВведіть катет Б: ");
-            double sideB = double.Parse(Console.ReadLine());
-            if (sideB < 0)
-            {
-                Console.WriteLine("Хибні значення");
-                goto SB;
-            }
-            this.sideA = sideA;
-            this.sideB = sideB;
+            double sideB = ValueValidator();
+            this.SideB = sideB;
         }
 
         public void GetTRTriangle()
@@ -98,11 +103,11 @@
             return sideA + sideB + Hipotenusa();
         }
 
-        public bool Equals(TRTriangle name)
+        public bool Equals(TRTriangle trt)
         {
-            if (name == null) return false;
-            return (name.sideA == sideA && name.sideB == sideB || name.sideA == sideB && name.sideB == sideA) ;
-            
+            if(trt.GetType() == typeof(TRTriangle))
+            return (trt.sideA == sideA && trt.sideB == sideB || trt.sideA == sideB && trt.sideB == sideA) ;
+            else return false;
         }
         
         public static TRTriangle operator *(TRTriangle name, double number)

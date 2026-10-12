@@ -9,7 +9,7 @@ namespace OOP_lab_1.Tests
         public void MyArray_IndexerAndMinMax_WorksCorrectly()
         {
             //макс та мін значення в масиві
-            var arr = new MyArray(3);
+            var arr = new MyArray();
             arr[0] = 10;
             arr[1] = -5;
             arr[2] = 3;

@@ -11,10 +11,15 @@
         public double High
         {
             get { return high; }
+
+
             set { if (value > 0) high = value; }
         }
 
-        public TRPiramid() : base() { }
+        public TRPiramid() : base() 
+        {
+            high = 5;
+        }
         
 
         public TRPiramid(double sideA, double sideB, double high) : base (sideA , sideB)
@@ -62,7 +67,8 @@
             while (true)
             {
                 Console.Write("Введіть катет А: ");
-                if (double.TryParse(Console.ReadLine(), out input) && input > 0)
+                string input_str = Console.ReadLine().Replace(",", ".");
+                if (double.TryParse(input_str, out input) && input > 0)
                 {
                     SideA = input;
                     break; 
@@ -73,7 +79,8 @@
             while (true)
             {
                 Console.Write("Введіть катет B: ");
-                if (double.TryParse(Console.ReadLine(), out input) && input > 0)
+                string input_str = Console.ReadLine().Replace(",", ".");
+                if (double.TryParse(input_str, out input) && input > 0)
                 {
                     SideB = input;
                     break;
@@ -84,7 +91,8 @@
             while (true)
             {
                 Console.Write("Введіть висоту піраміди: ");
-                if (double.TryParse(Console.ReadLine(), out input) && input > 0)
+                string input_str = Console.ReadLine().Replace(",", ".");
+                if (double.TryParse(input_str, out input) && input > 0)
                 {
                     High = input;
                     break;
@@ -100,10 +108,12 @@
         {
             return name * number;
         }
-        public bool Equals(TRPiramid other)
+        public bool Equals(TRPiramid trp)
         {
-            return (this.SideA == other.SideA && this.SideB == other.SideB && this.high == other.high) ||
-                   (this.SideA == other.SideB && this.SideB == other.SideA && this.high == other.high);
+            if (trp.GetType() == typeof(TRPiramid))
+                return (this.SideA == trp.SideA && this.SideB == trp.SideB && this.high == trp.high) ||
+                   (this.SideA == trp.SideB && this.SideB == trp.SideA && this.high == trp.high);
+            else return false;
         }
     }
 }
