@@ -67,8 +67,7 @@
             while (true)
             {
                 Console.Write("Введіть катет А: ");
-                string input_str = Console.ReadLine().Replace(",", ".");
-                if (double.TryParse(input_str, out input) && input > 0)
+                if (double.TryParse(Console.ReadLine(), out input) && input > 0)
                 {
                     SideA = input;
                     break; 
@@ -79,8 +78,7 @@
             while (true)
             {
                 Console.Write("Введіть катет B: ");
-                string input_str = Console.ReadLine().Replace(",", ".");
-                if (double.TryParse(input_str, out input) && input > 0)
+                if (double.TryParse(Console.ReadLine(), out input) && input > 0)
                 {
                     SideB = input;
                     break;
@@ -91,8 +89,7 @@
             while (true)
             {
                 Console.Write("Введіть висоту піраміди: ");
-                string input_str = Console.ReadLine().Replace(",", ".");
-                if (double.TryParse(input_str, out input) && input > 0)
+                if (double.TryParse(Console.ReadLine(), out input) && input > 0)
                 {
                     High = input;
                     break;

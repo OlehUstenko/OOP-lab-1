@@ -75,8 +75,8 @@
         {
       
             Console.Write("\nВведіть катет А: ");
-            double sideA = ValueValidator();
-            this.SideA = sideA;      
+            SideA = ValueValidator();
+            //this.SideA = sideA;      
 
             Console.Write("\nВведіть катет Б: ");
             double sideB = ValueValidator();
@@ -105,7 +105,7 @@
 
         public bool Equals(TRTriangle trt)
         {
-            if(trt.GetType() == typeof(TRTriangle))
+            if(trt.GetType() == typeof(TRTriangle) && trt != null)
             return (trt.sideA == sideA && trt.sideB == sideB || trt.sideA == sideB && trt.sideB == sideA) ;
             else return false;
         }

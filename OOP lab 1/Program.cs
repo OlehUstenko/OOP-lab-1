@@ -69,7 +69,7 @@
             var tr2 = new TRTriangle();
             tr2.SetTRTriangle();
             tr2.GetTRTriangle();
-
+            tr2 = null;
             Console.WriteLine("Порівняння трикутників 1 та 2 :" + tr1.Equals(tr2));
 
 
@@ -85,7 +85,7 @@
             while (true)
             {
                 Console.Write("Введіть число на яке помножити піраміду: ");
-                input = double.Parse(Console.ReadLine().Replace(",", "."));
+                input = double.Parse(Console.ReadLine());
                 if (input >= 0)
                 {
                     pir1 = input * pir1;
@@ -102,6 +102,9 @@
             pir2.SetTRPiramid();
             Console.WriteLine(pir2.ToString());
             Console.WriteLine($"Піраміда має периметр {pir2.P()}, площу {pir2.S()}, та об'єм {pir2.V()}");
+
+            var trp3 = new TRPiramid(pir1);
+            Console.WriteLine(trp3.ToString());
 
             Console.WriteLine("Порівняння піраміди 1 та 2: " + pir1.Equals(pir2));
         }
